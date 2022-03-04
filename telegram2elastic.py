@@ -214,7 +214,7 @@ def main():
     else:
         elasticsearch_httpauth = None
 
-    tg_client = TelegramClient(session=os.path.expanduser(get_config("telegram.session_file")), api_id=get_config("telegram.api_id"), api_hash=get_config("telegram.api_hash"))
+    tg_client = TelegramClient(session=os.path.expanduser(get_config("telegram.session_file")), api_id=get_config("telegram.api_id"), api_hash=get_config("telegram.api_hash"),proxy=("socks5", 'tg_elastic-xray', 1080))
     es_client = Elasticsearch(hosts=get_config("elasticsearch.host", "localhost"), http_auth=elasticsearch_httpauth)
 
     with tg_client:
